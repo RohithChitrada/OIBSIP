@@ -1,1 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>todolist</title>
+        <style>
+            body{
+                background-image: linear-gradient(rgba(0,0,0,0.50),rgba(0,0,0,0.50)),url("https://images.pexels.com/photos/5412/water-blue-ocean.jpg");
+            }
+            .top{
+                background-color: rgb(241, 240, 239);
+                height: 30px;
+                font-size: 25px;
+                padding-bottom: 15px;
+                display: flex;
+                width: 100%;
+            }
+            P{
+                margin-top: 3px;
+                margin-left: 10%;
+                color:rgb(3, 131, 131);
+            }
+            .container{
+                border: 2px solid black;
+                border-radius: 5px;
+                width: 300px;
+                height: 260px;
+                padding: 20px;
+                margin-left: 150px;
+                margin-top: 50px;
+                background-color: white;
+            }
+            input{
+                width: 100%;
+                border-radius: 3px;
+            }
+            textarea{
+                width: 100%;
+                border-radius: 3px;
+            }
+            #des{
+                height: 150px;
+            }
+            .container button{
+                width: 100%;
+                height: 25px;
+                background-color: rgb(19, 163, 19);
+                color: white;
+                border-radius: 3px;
+            }
+            .entries{
+                padding-left: 40%;
+                width: 40%;
+                margin-top: -15%;
+            }
+            th{
+            height: 30px;
+            width: 200px;
+            font-size: 20px;
+            color: white;
+            padding: 3px;
+            }
+            #details{
+                color: azure;
+                border-color: rgb(131, 216, 216);
+            }
+        </style>
+    </head>
+    <body>
+        <diV class="top">
+            <p>To-Do List Web App</p>
+        </diV>
+        <div>
+            <div>
+        <form id="form">
+        <div class="container">
+            <input type="text" placeholder="Title" id="title" required>
+            <br><br>
+            <textarea placeholder="Description" id="des" required></textarea>
+            <br><br>
+            <button type="submit" onclick="display()" id="buttoninput">Save</button>
+        </div>
+    </form>
+</div>
+</div>
+    <div class="entries">
+        <table id="details" border="1">
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Delete</th>
+                </tr>
+        </table>
+    </div>
+    <script>
+        function display(){
+            var a=document.getElementById("title").value;
+            let b=document.getElementById("des").value;
+            if(a!='' && b!=''){
+                var Add = document.getElementById("details");
+                var new1 = Add.insertRow();
+        
+                var del = document.createElement('button');
+                del.textContent = 'X';
+                del.addEventListener('click' , function () {
+                    var rowIndex = this.parentNode.parentNode.rowIndex;
+                    Add.deleteRow(rowIndex);
+                });  
+                var data1 = new1.insertCell(0);
+                var data2 = new1.insertCell(1);
+                var data3 = new1.insertCell(2);
 
+                data1.innerHTML = a;
+                data2.innerHTML = b;
+                data3.appendChild(del);
+
+                document.getElementById("form").reset();   
+            } 
+        }
+    </script>
+    </body>
+</html>
